@@ -56,5 +56,15 @@ planetaJSON.continentes["continente3"] = "África";
 var x;
 for (x in planetaJSON.continentes)
 {
-    document.getElementById("conPla").innerHTML +=planetaJSON.continentes[x] + ", ";
+    
+    if(x == "continente5")
+    {
+        document.getElementById("conPla").innerHTML +=planetaJSON.continentes[x];
+    }
+    else 
+    {
+        document.getElementById("conPla").innerHTML +=planetaJSON.continentes[x] + ", ";
+
+    }
+
 }
