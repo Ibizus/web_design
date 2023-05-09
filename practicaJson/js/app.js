@@ -36,7 +36,7 @@ if(habPla)
 }
 else 
 {
-    document.getElementById("habPla").innerHTML = "No";
+    document.getElementById("habPla").innerHTML = "No"; /* RELLENA DINAMICAMENTE EL HTML */
 }
 
 
@@ -64,7 +64,47 @@ for (x in planetaJSON.continentes)
     else 
     {
         document.getElementById("conPla").innerHTML +=planetaJSON.continentes[x] + ", ";
-
     }
 
 }
+
+/* Borrado de uno de sus atributos */
+delete planetaJSON.continentes.continente2;
+/* en la consola de la extension para desarrolladores se puede ver que continentes ya ha perdido ese valor */
+
+/** Como getElementById ya tiene algo guardado tenemos que vaciarlo para actualizarlo: */
+document.getElementById("conPla").innerHTML = "";
+for (x in planetaJSON.continentes)
+{
+    document.getElementById("conPla").innerHTML += planetaJSON.continentes[x] + ", ";
+}
+
+
+
+/***********************************************************************/
+/*** utilización de la funciones "JSON.stringify()" y "JSON.parse()" ***/
+/***********************************************************************/
+
+/* Declaración del objeto JS "planetaJS" */
+var planetaJS =
+{
+    nombre: "Tierra",
+    numero: 3,
+    radio: 6371,
+    tieneAnillos: false,
+    habitable: true
+};
+
+/* ESTO ES LO QUE USAMOS EN EL PROYECTO */
+/* conversion del objeto JS en un String JSON */
+var stringJSON = JSON.stringify(planetaJS);
+console.log(stringJSON);
+/* esto es lo mismo: console.log(JSON.stringify(planetaJS)); */
+
+
+/* Conversion del string JSON en un objeto JS */
+var objetoJS = JSON.parse(stringJSON);
+console.log(objetoJS);
+
+
+const usuario = document.getElementById("usuario").value;
